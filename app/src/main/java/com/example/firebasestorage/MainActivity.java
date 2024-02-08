@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -89,7 +90,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         else if (id==R.id.displayImageButton_Id)
         {
-
+            Intent intent = new Intent(MainActivity.this,ImageActivity.class);
+            startActivity(intent);
 
         }
 
@@ -150,7 +152,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 Toast.makeText(getApplicationContext(),"Image is stored successfully",Toast.LENGTH_LONG).show();
 
-                Upload upload = new Upload(imageName,taskSnapshot.getStorage().getDownloadUrl().toString());
+                Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
+                while (!urlTask.isSuccessful());
+                Uri downloadUrl = urlTask.getResult();
+
+                Upload upload = new Upload(imageName,downloadUrl.toString());
 
                 String uploadId = databaseReference.push().getKey();
                 databaseReference.child(uploadId).setValue(upload);
