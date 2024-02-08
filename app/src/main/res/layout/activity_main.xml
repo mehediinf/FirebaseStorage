@@ -1,18 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
+    android:weightSum="3"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/chooseImageButton_Id"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.25"
+        android:text="Choose Image"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageNameEditText_Id"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginTop="10dp"
+        android:hint="Enter a name for Image"
+        android:layout_weight="0.25"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView_Id"
+        android:layout_marginTop="10dp"
+        android:layout_weight="2"
+        />
+
+    <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/progressBar_Id"
+        android:layout_gravity="center"
+        android:layout_weight="0.16"
+        android:visibility="gone"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveImageButton_Id"
+        android:layout_marginTop="5dp"
+        android:layout_weight="0.17"
+        android:text="Save Image"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/displayImageButton_Id"
+        android:layout_marginTop="5dp"
+        android:layout_weight="0.17"
+        android:text="Display Image"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        />
+
+</LinearLayout>
